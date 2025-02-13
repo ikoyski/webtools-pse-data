@@ -13,14 +13,14 @@ public class PseDataService {
 	@Autowired
 	private PseDataProviderFactory pseDataProviderFactory;
 	
-	public PseDataResponse getData() {
+	public PseDataResponse stock() {
 		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPsaDataProvider();
-		return psaProviderProvider.getData();
+		return psaProviderProvider.stock();
 	}
 
-	public PseDataResponse getData(String symbol) {
+	public PseDataResponse stock(String symbol) {
 		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPsaDataProvider();
-		return psaProviderProvider.getData(symbol);
+		return psaProviderProvider.stock(symbol);
 	}
 
 }

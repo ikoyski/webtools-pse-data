@@ -19,28 +19,28 @@ class PseDataControllerTest {
 
 	@MockBean
 	private PseDataService pseDataService;
-
+	
 	@Test
-	@DisplayName("IpLocationControllerTest.getDataSucces2()")
-	void getDataSuccess() {
+	@DisplayName("PsaDataControllerTest.stockSucces()")
+	void getDataSucces() {
 		// when
-		pseDataController.getData();
+		pseDataController.stock();
 
 		// then
-		verify(pseDataService).getData();
+		verify(pseDataService).stock();
 	}
 
 	@Test
-	@DisplayName("IpLocationControllerTest.getDataSucces2()")
+	@DisplayName("PsaDataControllerTest.stockSucces2()")
 	void getDataSucces2() {
 		// given
-		final String symbol = "BDO";
+		final String SYMBOL = "BDO";
 
 		// when
-		pseDataController.getData(symbol);
+		pseDataController.stock(SYMBOL);
 
 		// then
-		verify(pseDataService).getData(symbol);
+		verify(pseDataService).stock(SYMBOL);
 	}
 
 }

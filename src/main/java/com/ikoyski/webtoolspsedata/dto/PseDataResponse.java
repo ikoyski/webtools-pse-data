@@ -2,9 +2,13 @@ package com.ikoyski.webtoolspsedata.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PseDataResponse {
 
 	List<Stock> stock;
+	
+	@JsonProperty("as_of")
 	String asOf;
 
 	public List<Stock> getStock() {

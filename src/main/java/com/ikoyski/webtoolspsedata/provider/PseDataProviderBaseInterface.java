@@ -6,8 +6,8 @@ public interface PseDataProviderBaseInterface {
 
 	public static final String ERROR_INVALID_URI = "invalid uri";
 
-	public PseDataResponse getData();
+	public PseDataResponse stock();
 
-	public PseDataResponse getData(String symbol);
+	public PseDataResponse stock(String symbol);
 
 }

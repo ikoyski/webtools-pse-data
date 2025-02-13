@@ -26,20 +26,39 @@ class PseDataServiceTest {
 
 	@MockBean
 	PseDataProviderBaseInterface psaDataProvider;
-
+	
 	@Test
 	@DisplayName("PsaDataServiceTest.getPsaDataSuccess()")
 	void getPsaDataSuccess() {
 		// given
-		final String SYMBOL = "ABC";
-		final String NAME = "Dummy Bank";
+		final String NAME = "Ayala Corporation Non-Voting Perpetual Preferred A Shares";
 		PseDataResponse pseDataResponse = new PseDataResponse();
 		pseDataResponse.setStock(new ArrayList<Stock>());
+		pseDataResponse.getStock().add(new Stock());
 		pseDataResponse.getStock().get(0).setName(NAME);
-		doReturn(pseDataResponse).when(psaDataProvider).getData(SYMBOL);
+		doReturn(pseDataResponse).when(psaDataProvider).stock();
 
 		// when
-		PseDataResponse pseDataResponse2 = pseDataService.getData(SYMBOL);
+		PseDataResponse pseDataResponse2 = pseDataService.stock();
+
+		// then
+		Assertions.assertEquals(pseDataResponse2.getStock().get(0).getName(), NAME);
+	}
+
+	@Test
+	@DisplayName("PsaDataServiceTest.getPsaDataSuccess2()")
+	void getPsaDataSuccess2() {
+		// given
+		final String SYMBOL = "BPI";
+		final String NAME = "Bank of the Philippine Islands";
+		PseDataResponse pseDataResponse = new PseDataResponse();
+		pseDataResponse.setStock(new ArrayList<Stock>());
+		pseDataResponse.getStock().add(new Stock());
+		pseDataResponse.getStock().get(0).setName(NAME);
+		doReturn(pseDataResponse).when(psaDataProvider).stock(SYMBOL);
+
+		// when
+		PseDataResponse pseDataResponse2 = pseDataService.stock(SYMBOL);
 
 		// then
 		Assertions.assertEquals(pseDataResponse2.getStock().get(0).getName(), NAME);

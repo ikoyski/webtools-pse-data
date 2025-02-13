@@ -17,16 +17,16 @@ public class PseDataController {
 		this.pseDataService = pseDataService;
 	}
 	
-	@GetMapping(path = "api/v1/getData")
-	@Cacheable(value = "getData", key = "#data")
-	public PseDataResponse getData() {
-		return pseDataService.getData();
+	@GetMapping(path = "api/v1/stock")
+	@Cacheable(value = "stock")
+	public PseDataResponse stock() {
+		return pseDataService.stock();
 	}
 
-	@GetMapping(path = "api/v1/getData/{symbol}")
-	@Cacheable(value = "getData", key = "#symbol")
-	public PseDataResponse getData(@PathVariable("symbol") String symbol) {
-		return pseDataService.getData(symbol);
+	@GetMapping(path = "api/v1/stock/{symbol}")
+	@Cacheable(value = "stock", key = "#symbol")
+	public PseDataResponse stock(@PathVariable("symbol") String symbol) {
+		return pseDataService.stock(symbol);
 	}
 
 }

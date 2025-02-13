@@ -1,6 +1,6 @@
 # webtools-pse-data 
 
-This is an wrapper app for getting geo-ip data from a geo-ip provider.
+This is a wrapper app for getting PSE stock data from a PSE stock data provider.
 
 Click on the downloaded Lombok-{version}.jar and select your IDE to install lombok
 Restart the IDE after successful Lombok installation
@@ -79,33 +79,32 @@ This endpoint will return something like the following.
 Hit the functional endpoint (**localhost**)
 
 ```
-curl --location --request GET 'http://localhost:8080/api/v1/ipLocation/8.8.8.8'
+curl --location --request GET 'http://localhost:8094/api/v1/stock'
+curl --location --request GET 'http://localhost:8094/api/v1/stock/AREIT'
 ```
 
 Hit the functional endpoint (**render**)
 
 ```
-curl --location --request GET 'https://webtools-pse-data.onrender.com/api/v1/ipLocation/8.8.8.8'
+curl --location --request GET 'https://webtools-pse-data.onrender.com/api/v1/stock'
+curl --location --request GET 'https://webtools-pse-data.onrender.com/api/v1/stock/AREIT'
 ```
 
 This should return something like
 
 ```
 {
-    "query": "8.8.8.8",
-    "status": "success",
-    "country": "United States",
-    "countryCode": "US",
-    "region": "VA",
-    "regionName": "Virginia",
-    "city": "Ashburn",
-    "zip": "20149",
-    "lat": "39.03",
-    "lon": "-77.5",
-    "timezone": "America/New_York",
-    "isp": "Google LLC",
-    "org": "Google Public DNS",
-    "as": "AS15169 Google LLC"
+	"stock":[{
+		"name":"AREIT, Inc.",
+		"price":{
+			"currency":"PHP",
+			"amount":39.9
+		},
+		"volume":1078800,
+		"symbol":"AREIT",
+		"percent_change":0.38
+	}],
+	"as_of":"2025-02-14T00:00:00+08:00"
 }
 ```
 

@@ -13,13 +13,18 @@ import com.ikoyski.webtoolspsedata.dto.PseDataResponse;
 
 public class PseDataProviderPhisix implements PseDataProviderBaseInterface {
 
-	String BASE_ENDPOINT = "https://phisix-api3.appspot.com";
+	String BASE_URL;
+
+	public PseDataProviderPhisix(String phisixBaseUrl) {
+		super();
+		this.BASE_URL = phisixBaseUrl;
+	}
 
 	@Override
-	public PseDataResponse getData() {
+	public PseDataResponse stock() {
 		PseDataResponse pseDataResponse = null;
 		try {
-			URI uri = new URI(BASE_ENDPOINT + "/stocks.json");
+			URI uri = new URI(BASE_URL + "/stocks.json");
 			RestTemplate restTemplate = new RestTemplate();
 			pseDataResponse = restTemplate.getForObject(uri.toURL().toString(), PseDataResponse.class);
 		} catch (URISyntaxException | RestClientException | MalformedURLException e) {
@@ -30,10 +35,10 @@ public class PseDataProviderPhisix implements PseDataProviderBaseInterface {
 	}
 
 	@Override
-	public PseDataResponse getData(String symbol) {
+	public PseDataResponse stock(String symbol) {
 		PseDataResponse pseDataResponse = null;
 		try {
-			URI uri = new URI(BASE_ENDPOINT + "/stocks/" + symbol.toUpperCase() + ".json");
+			URI uri = new URI(BASE_URL + "/stocks/" + symbol.toUpperCase() + ".json");
 			RestTemplate restTemplate = new RestTemplate();
 			pseDataResponse = restTemplate.getForObject(uri.toURL().toString(), PseDataResponse.class);
 		} catch (URISyntaxException | RestClientException | MalformedURLException e) {

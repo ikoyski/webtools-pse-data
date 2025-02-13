@@ -11,6 +11,13 @@ public class PseDataProviderFactory {
 	@Value("${provider.default}")
 	private String PROVIDER_DEFAULT;
 
+	@Value("${provider.phisix.baseUrl}")
+	private String phisixBaseUrl;
+
+	public void setPhisixBaseUrl(String phisixBaseUrl) {
+		this.phisixBaseUrl = phisixBaseUrl;
+	}
+
 	public PseDataProviderBaseInterface createPsaDataProvider() {
 		return createPsaDataProvider(PROVIDER_DEFAULT);
 	}
@@ -18,7 +25,7 @@ public class PseDataProviderFactory {
 	public PseDataProviderBaseInterface createPsaDataProvider(String type) {
 		if (PROVIDER_PHISIX.equals(type)) {
 			// using https://phisix-api3.appspot.com
-			return new PseDataProviderPhisix();
+			return new PseDataProviderPhisix(phisixBaseUrl);
 		} else {
 			throw new IllegalArgumentException("No such provider.");
 		}
