@@ -14,8 +14,8 @@ import com.ikoyski.webtoolspsedata.dto.Stock;
 class PseDataResponseTest {
 
 	@Test
-	@DisplayName("PsaDataResponseTest.psaDataResponseSuccess()")
-	void psaDataResponseSuccess() {
+	@DisplayName("PseDataResponseTest.pseDataResponseSuccess()")
+	void pseDataResponseSuccess() {
 		// given
 		final String NAME = "Bank of the Philippine Islands";
 		final String CURRENCY = "PHP";

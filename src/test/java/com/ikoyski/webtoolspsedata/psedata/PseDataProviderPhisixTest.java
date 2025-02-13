@@ -17,47 +17,47 @@ class PseDataProviderPhisixTest {
 	private String phisixBaseUrl;
 	
 	@Test
-	@DisplayName("PsaDataProviderPhisixTest.psaDataProviderPhisixException()")
-	void psaDataProviderIpApiException() {
+	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixException()")
+	void pseDataProviderIpApiException() {
 		// given
-		PseDataProviderFactory psaDataProviderFactory = new PseDataProviderFactory();
-		psaDataProviderFactory.setPhisixBaseUrl("\\");
-		PseDataProviderBaseInterface psaDataProvider = psaDataProviderFactory
-				.createPsaDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
+		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
+		pseDataProviderFactory.setPhisixBaseUrl("\\");
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
+				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
 		// when and then
-		Assertions.assertThrows(Exception.class, () -> psaDataProvider.stock());
+		Assertions.assertThrows(Exception.class, () -> pseDataProvider.stock());
 	}
 
 	@Test
-	@DisplayName("PsaDataProviderPhisixTest.psaDataProviderPhisixSuccess2()")
-	void psaDataProviderPhisixSuccess2() {
+	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixSuccess2()")
+	void pseDataProviderPhisixSuccess2() {
 		// given
 		final String symbol = "BDO";
-		PseDataProviderFactory psaDataProviderFactory = new PseDataProviderFactory();
-		psaDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
-		PseDataProviderBaseInterface psaDataProvider = psaDataProviderFactory
-				.createPsaDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
+		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
+		pseDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
+				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
 		// when
-		PseDataResponse psaDataResponse = psaDataProvider.stock(symbol);
+		PseDataResponse pseDataResponse = pseDataProvider.stock(symbol);
 
 		// then
-		Assertions.assertNotNull(psaDataResponse);
+		Assertions.assertNotNull(pseDataResponse);
 	}
 
 	@Test
-	@DisplayName("PsaDataProviderPhisixTest.psaDataProviderPhisixException2()")
-	void psaDataProviderIpApiException2() {
+	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixException2()")
+	void pseDataProviderIpApiException2() {
 		// given
 		final String symbol = "\\";
-		PseDataProviderFactory psaDataProviderFactory = new PseDataProviderFactory();
-		psaDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
-		PseDataProviderBaseInterface psaDataProvider = psaDataProviderFactory
-				.createPsaDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
+		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
+		pseDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
+				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
 		// when and then
-		Assertions.assertThrows(Exception.class, () -> psaDataProvider.stock(symbol));
+		Assertions.assertThrows(Exception.class, () -> pseDataProvider.stock(symbol));
 	}
 
 }

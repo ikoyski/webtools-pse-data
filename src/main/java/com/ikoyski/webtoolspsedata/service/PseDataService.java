@@ -14,12 +14,12 @@ public class PseDataService {
 	private PseDataProviderFactory pseDataProviderFactory;
 	
 	public PseDataResponse stock() {
-		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPsaDataProvider();
+		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPseDataProvider();
 		return psaProviderProvider.stock();
 	}
 
 	public PseDataResponse stock(String symbol) {
-		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPsaDataProvider();
+		PseDataProviderBaseInterface psaProviderProvider = pseDataProviderFactory.createPseDataProvider();
 		return psaProviderProvider.stock(symbol);
 	}
 

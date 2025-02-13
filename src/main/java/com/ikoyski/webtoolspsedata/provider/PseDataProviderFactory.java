@@ -18,11 +18,11 @@ public class PseDataProviderFactory {
 		this.phisixBaseUrl = phisixBaseUrl;
 	}
 
-	public PseDataProviderBaseInterface createPsaDataProvider() {
-		return createPsaDataProvider(PROVIDER_DEFAULT);
+	public PseDataProviderBaseInterface createPseDataProvider() {
+		return createPseDataProvider(PROVIDER_DEFAULT);
 	}
 
-	public PseDataProviderBaseInterface createPsaDataProvider(String type) {
+	public PseDataProviderBaseInterface createPseDataProvider(String type) {
 		if (PROVIDER_PHISIX.equals(type)) {
 			// using https://phisix-api3.appspot.com
 			return new PseDataProviderPhisix(phisixBaseUrl);

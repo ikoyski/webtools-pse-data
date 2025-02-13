@@ -25,18 +25,18 @@ class PseDataServiceTest {
 	private PseDataService pseDataService;
 
 	@MockBean
-	PseDataProviderBaseInterface psaDataProvider;
+	PseDataProviderBaseInterface pseDataProvider;
 	
 	@Test
-	@DisplayName("PsaDataServiceTest.getPsaDataSuccess()")
-	void getPsaDataSuccess() {
+	@DisplayName("PseDataServiceTest.getPseDataSuccess()")
+	void getPseDataSuccess() {
 		// given
 		final String NAME = "Ayala Corporation Non-Voting Perpetual Preferred A Shares";
 		PseDataResponse pseDataResponse = new PseDataResponse();
 		pseDataResponse.setStock(new ArrayList<Stock>());
 		pseDataResponse.getStock().add(new Stock());
 		pseDataResponse.getStock().get(0).setName(NAME);
-		doReturn(pseDataResponse).when(psaDataProvider).stock();
+		doReturn(pseDataResponse).when(pseDataProvider).stock();
 
 		// when
 		PseDataResponse pseDataResponse2 = pseDataService.stock();
@@ -46,8 +46,8 @@ class PseDataServiceTest {
 	}
 
 	@Test
-	@DisplayName("PsaDataServiceTest.getPsaDataSuccess2()")
-	void getPsaDataSuccess2() {
+	@DisplayName("PseDataServiceTest.getPseDataSuccess2()")
+	void getPseDataSuccess2() {
 		// given
 		final String SYMBOL = "BPI";
 		final String NAME = "Bank of the Philippine Islands";
@@ -55,7 +55,7 @@ class PseDataServiceTest {
 		pseDataResponse.setStock(new ArrayList<Stock>());
 		pseDataResponse.getStock().add(new Stock());
 		pseDataResponse.getStock().get(0).setName(NAME);
-		doReturn(pseDataResponse).when(psaDataProvider).stock(SYMBOL);
+		doReturn(pseDataResponse).when(pseDataProvider).stock(SYMBOL);
 
 		// when
 		PseDataResponse pseDataResponse2 = pseDataService.stock(SYMBOL);

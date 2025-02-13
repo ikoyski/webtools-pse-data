@@ -12,27 +12,27 @@ import com.ikoyski.webtoolspsedata.provider.PseDataProviderFactory;
 class PseDataProviderFactoryTest {
 
 	@Test
-	@DisplayName("PsaDataProviderFactoryTest.psaDataProviderFactorySuccess()")
-	void psaDataProviderFactorySuccess() {
+	@DisplayName("PseDataProviderFactoryTest.pseDataProviderFactorySuccess()")
+	void pseDataProviderFactorySuccess() {
 		// given
 		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
 
 		// when
-		PseDataProviderBaseInterface psaDataProvider = pseDataProviderFactory
-				.createPsaDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
+				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
 		// then
-		Assertions.assertNotNull(psaDataProvider);
+		Assertions.assertNotNull(pseDataProvider);
 	}
 
 	@Test
-	@DisplayName("PsaDataProviderFactoryTest.psaDataProviderFactoryException()")
-	void psaDataProviderFactoryException() {
+	@DisplayName("PseDataProviderFactoryTest.pseDataProviderFactoryException()")
+	void pseDataProviderFactoryException() {
 		// given
 		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
 
 		// when and then
 		Assertions.assertThrows(IllegalArgumentException.class,
-				() -> pseDataProviderFactory.createPsaDataProvider("Dummy"));
+				() -> pseDataProviderFactory.createPseDataProvider("Dummy"));
 	}
 }

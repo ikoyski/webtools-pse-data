@@ -21,7 +21,7 @@ class PseDataControllerTest {
 	private PseDataService pseDataService;
 	
 	@Test
-	@DisplayName("PsaDataControllerTest.stockSucces()")
+	@DisplayName("PseDataControllerTest.stockSucces()")
 	void getDataSucces() {
 		// when
 		pseDataController.stock();
@@ -31,7 +31,7 @@ class PseDataControllerTest {
 	}
 
 	@Test
-	@DisplayName("PsaDataControllerTest.stockSucces2()")
+	@DisplayName("PseDataControllerTest.stockSucces2()")
 	void getDataSucces2() {
 		// given
 		final String SYMBOL = "BDO";
