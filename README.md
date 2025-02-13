@@ -1,4 +1,4 @@
-# webtools-pse-data 
+# webtools-pse-data
 
 This is a wrapper app for getting PSE stock data from a PSE stock data provider.
 
