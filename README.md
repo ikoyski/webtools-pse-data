@@ -43,7 +43,7 @@ java -jar target/*.jar
 There is a `/health` endpoint that provides basic information about the application’s health:
 
 ```
-curl http://localhost:8080/actuator/health
+curl http://localhost:8094/actuator/health
 ```
 
 The endpoint should display the following.
@@ -60,7 +60,7 @@ unhealthy due to any issue like connectivity with the database or lack of disk s
 The build and version information can be checked by calling the `/info` endpoint.  This allows checking of the git tags, maven version, build date etc.
 
 ```
-curl http://localhost:8080/actuator/info
+curl http://localhost:8094/actuator/info
 ```
 
 This endpoint will return something like the following.
