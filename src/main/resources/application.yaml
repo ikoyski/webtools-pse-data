@@ -1,26 +1,5 @@
-server:
-  port: 8094
-
 spring:
+  config:
+    import: "optional:configserver:http://localhost:8089"
   application:
-    name: webtools-pse-data
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  info:
-    git:
-      mode: full
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761
-
-provider:
-  default: Phisix
-  phisix:
-    baseUrl: https://phisix-api3.appspot.com
-
+    name: webtools-psa-data

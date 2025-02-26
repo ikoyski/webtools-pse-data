@@ -1,13 +1,10 @@
 package com.ikoyski.webtools.psedata.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Stock {
 
 	String name;
 	Price price;
 	
-	@JsonProperty("percent_change")
 	Double percentChange;
 	Integer volume;
 	String symbol;

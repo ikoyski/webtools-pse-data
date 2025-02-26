@@ -3,30 +3,32 @@ package com.ikoyski.webtools.psedata;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.ikoyski.webtools.psedata.dto.PseDataResponse;
 import com.ikoyski.webtools.psedata.provider.PseDataProviderBaseInterface;
 import com.ikoyski.webtools.psedata.provider.PseDataProviderFactory;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class PseDataProviderPhisixTest {
-	
-	@Value("${provider.phisix.baseUrl}")
-	private String phisixBaseUrl;
-	
-	@Test
-	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixException()")
-	void pseDataProviderIpApiException() {
-		// given
-		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
-		pseDataProviderFactory.setPhisixBaseUrl("\\");
-		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
-				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
-		// when and then
-		Assertions.assertThrows(Exception.class, () -> pseDataProvider.stock());
+	@Autowired
+	PseDataProviderFactory pseDataProviderFactory;
+
+	@Test
+	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixSuccess()")
+	void pseDataProviderPhisixSuccess() {
+		// given
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory.createPseDataProvider();
+
+		// when
+		PseDataResponse pseDataResponse = pseDataProvider.stock();
+
+		// then
+		Assertions.assertNotNull(pseDataResponse);
 	}
 
 	@Test
@@ -34,10 +36,7 @@ class PseDataProviderPhisixTest {
 	void pseDataProviderPhisixSuccess2() {
 		// given
 		final String symbol = "BDO";
-		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
-		pseDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
-		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
-				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
+		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory.createPseDataProvider();
 
 		// when
 		PseDataResponse pseDataResponse = pseDataProvider.stock(symbol);
@@ -47,12 +46,10 @@ class PseDataProviderPhisixTest {
 	}
 
 	@Test
-	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixException2()")
-	void pseDataProviderIpApiException2() {
+	@DisplayName("PseDataProviderPhisixTest.pseDataProviderPhisixException()")
+	void pseDataProviderPhisixException() {
 		// given
-		final String symbol = "\\";
-		PseDataProviderFactory pseDataProviderFactory = new PseDataProviderFactory();
-		pseDataProviderFactory.setPhisixBaseUrl(phisixBaseUrl);
+		final String symbol = "*";
 		PseDataProviderBaseInterface pseDataProvider = pseDataProviderFactory
 				.createPseDataProvider(PseDataProviderFactory.PROVIDER_PHISIX);
 
